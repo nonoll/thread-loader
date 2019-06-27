@@ -118,6 +118,14 @@ const queue = asyncQueue(({ id, data }, taskCallback) => {
           });
           nextQuestionId += 1;
         },
+        emitData: (request, transferData) => {
+          writeJson({
+            type: 'emitData',
+            id,
+            request,
+            data: transferData,
+          });
+        },
         emitWarning: (warning) => {
           writeJson({
             type: 'emitWarning',
